@@ -1,13 +1,16 @@
-// return max profit you can achieve from the given array of stock prices
+// You are given an array prices where prices[i] is the price of a given stock on the ith day.
+// You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+// Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
 
-function maxProfit (prices){
-    let maxProfit = 0; // initialize maxProfit to 0
-    for (let i = 0; i < prices.length; i++) { // iterate through prices array
-        for (let j = i + 1; j < prices.length; j++) { // iterate through prices array again
-            if (prices[j] - prices[i] > maxProfit) { // if the difference between the current price and the next price is greater than the maxProfit, set maxProfit to the difference
-                maxProfit = prices[j] - prices[i]; // set maxProfit to the difference
-            }
+function maxProfit(prices){
+    let maxProfit = 0;
+    let minPrice = prices[0];
+    for(let i = 0; i < prices.length; i++){
+        if(prices[i] < minPrice){
+            minPrice = prices[i];
+        } else if(prices[i] - minPrice > maxProfit){
+            maxProfit = prices[i] - minPrice;
         }
     }
-    return maxProfit; // return maxProfit
+    return maxProfit;
 }
