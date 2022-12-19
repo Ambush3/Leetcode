@@ -1,20 +1,21 @@
-// create an anagram using hash
+// Given two strings s and t, return true if t is an anagram of s, and false otherwise.
 
-function anagram(s, t) {
-    let hash = {};
+// An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+var isAnagram = function(s, t) {
+    if (s.length !== t.length) return false;
+    
+    const sMap = {};
+    const tMap = {};
+    
     for (let i = 0; i < s.length; i++) {
-        if (hash[s[i]]) {
-        hash[s[i]]++;
-        } else {
-        hash[s[i]] = 1;
-        }
+        sMap[s[i]] = sMap[s[i]] + 1 || 1;
+        tMap[t[i]] = tMap[t[i]] + 1 || 1;
     }
-    for (let i = 0; i < t.length; i++) {
-        if (hash[t[i]]) {
-        hash[s[i]]--;
-        } else {
-        return false;
-        }
+    
+    for (let key in sMap) {
+        if (sMap[key] !== tMap[key]) return false;
     }
+    
     return true;
-}
+};
