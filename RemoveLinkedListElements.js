@@ -15,3 +15,15 @@ function removeElements (head, val) {
 
     return dummyHead.next; // return the dummy head's next node
 }
+
+// better time complexity
+
+function removeElements (head, val) {
+    if (head === null) { // if the head is null
+        return head; // return the head
+    }
+
+    head.next = removeElements(head.next, val); // recursively call the function to remove the node with the value to be removed
+
+    return head.val === val ? head.next : head; // if the head's value is the value to be removed, then return the head's next node, else return the head
+}
