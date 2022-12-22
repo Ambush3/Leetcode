@@ -14,3 +14,5 @@ function addTwoNumbers(l1, l2){
     }
     return head.next;
 }
+
+// this is using time complexity of O(n) and space complexity of O(1)
