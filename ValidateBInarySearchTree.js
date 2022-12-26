@@ -1,13 +1,10 @@
-// given root of binary tree, determine if it is a valid binary tree
-// left subtree of node contains only nodes with keys < than the nodes key
-// right subtree of node contains only nodes with keys > than the nodes key
-// both subtrees must be binary search trees
+// Given the root of a binary tree, determine if it is a valid binary search tree(BST).
 
-function isValidBST(root){
-    if (root === null) return true;
-    if (root.left !== null && root.left.val >= root.val) return false;
-    if (root.right !== null && root.right.val <= root.val) return false;
-    
-    if (!isValidBST(root.left) || !isValidBST(root.right)) return false;
-    return true;
+const isValidBST = (root) => {
+    const helper = (node, min, max) => {
+        if (!node) return true
+        if (node.val <= min || node.val >= max) return false
+        return helper(node.left, min, node.val) && helper(node.right, node.val, max)
+    }
+    return helper(root, Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER)
 }
