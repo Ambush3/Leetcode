@@ -30,3 +30,29 @@ var deserialize = function (data) {
  * Your functions will be called as such:
  * deserialize(serialize(root));
  */
+
+
+
+// the right way to do it 
+// this uses the time and space complexity of O(n) 
+// where n is the number of nodes in the tree
+
+var serialize = function(root) {
+    if (!root) return 'null';
+    return root.val + ',' + serialize(root.left) + ',' + serialize(root.right);
+}
+
+var deserialize = function(data) {
+    let arr = data.split(',');
+    return deserializeHelper(arr);
+}
+
+function deserializeHelper(arr) {
+    let val = arr.shift();
+    if (val === 'null') return null;
+    let node = new TreeNode(val);
+    node.left = deserializeHelper(arr);
+    node.right = deserializeHelper(arr);
+    return node;
+}
+
