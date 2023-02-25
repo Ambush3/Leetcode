@@ -1,12 +1,8 @@
-var findKthLargest = function (nums, k) {
-    nums.sort()
-    let largest = Number.MAX_VALUE;
-    let j = 1;
-    for (let i = 0; i < k; i++) {
-        if (largest > nums[nums.length - j]) {
-            largest = nums[nums.length - j]
-        }
-        j++
-    }
-    return largest
-};
+// Given an integer array nums and an integer k, return the kth largest element in the array.
+// Note that it is the kth largest element in the sorted order, not the kth distinct element.
+// You must solve it in O(n) time complexity.
+
+function findKthLargest(nums, k) {
+    const sorted = nums.sort((a, b) => a - b);
+    return sorted[sorted.length - k];
+}
