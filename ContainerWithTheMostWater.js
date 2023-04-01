@@ -15,8 +15,6 @@ var maxArea = function (height) {
     }
 
     return maxArea;
-
-    
 };
 
 var maxArea = function (height) {
@@ -34,12 +32,12 @@ var maxArea = function (height) {
     // so we are increasing the height of the container
 
 
-    let theMaxArea = 0; 
+    let maxArea = 0;
     let left = 0;
     let right = height.length - 1;
     while (left < right) {
-        const area = Math.min(height[left], height[right]) * (right - left); 
-        maxArea = Math.max(maxArea, area); 
+        const area = Math.min(height[left], height[right]) * (right - left);
+        maxArea = Math.max(maxArea, area);
         if (height[left] < height[right]) {
             left++;
         } else {
@@ -47,5 +45,5 @@ var maxArea = function (height) {
         }
     }
 
-    return theMaxArea;
+    return maxArea;
 };
