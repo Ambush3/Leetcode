@@ -1,4 +1,8 @@
 var summaryRanges = function(array) {
+    if (array.length === 0){
+        return []
+    }
+
     let consecutiveGroups = [];
     let currentGroup = [array[0]];
 
